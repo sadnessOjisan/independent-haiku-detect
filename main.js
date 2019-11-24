@@ -1,30 +1,11 @@
-const fileContents = `/* eslint-disable */
+const fs = require("fs");
 
-const p = {
-  apple: 'pears',
-};
+fs.readFile("./example/example1.js", "utf-8", (err, data) => {
+  if (err) throw err; // 例外発生時の処理
+  const result = require("@babel/parser").parse(data, {
+    sourceType: "module",
+    tokens: true
+  });
 
-const entries = {
-  "nav-back": "Go back",
-  someLanguages: {
-    "languages": [
-      "en",
-      "de",
-    ],
-  },
-  "some": {
-    'nested': {
-      prop: "penisface",
-    },
-  },
-  ...p,
-};
-
-export default entries;`;
-
-const result = require("@babel/parser").parse(fileContents, {
-  sourceType: "module",
-  tokens: true
+  console.log(result.tokens.map(t => t.value));
 });
-
-console.log(result.tokens.map(t => t.value));
