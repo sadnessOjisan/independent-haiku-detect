@@ -1,17 +1,30 @@
-const result = require("@babel/parser").parse(
-  `
-class Hoge {
-    constructor() {
-      alert("hey men");
-    }
-  }
-  
-`,
-  {
-    sourceType: "module",
+const fileContents = `/* eslint-disable */
 
-    plugins: []
-  }
-);
+const p = {
+  apple: 'pears',
+};
 
-console.log(result);
+const entries = {
+  "nav-back": "Go back",
+  someLanguages: {
+    "languages": [
+      "en",
+      "de",
+    ],
+  },
+  "some": {
+    'nested': {
+      prop: "penisface",
+    },
+  },
+  ...p,
+};
+
+export default entries;`;
+
+const result = require("@babel/parser").parse(fileContents, {
+  sourceType: "module",
+  tokens: true
+});
+
+console.log(result.tokens.map(t => t.value));
