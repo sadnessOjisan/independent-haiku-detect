@@ -1,0 +1,14 @@
+{
+  "name": "independent-haiku-detect",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/sadnessOjisan/independent-haiku-detect.git",
+  "author": "sadness_ojisan <sadness.ojisan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/parser": "^7.7.4"
+  },
+  "scripts": {
+    "parse": "node main.js"
+  }
+}
